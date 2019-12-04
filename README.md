@@ -1,16 +1,20 @@
-# mobile_web_firebase
+# Firebase on Flutter mobile and web
 
 Simple Tutorial for Firebase Authentication (login) and Firestore on Flutter mobile and web
 
-## Getting Started
+# The Problem
+Since Flutter web came out from beta this year, I've been wanting to make a full production app that works smoothly for both mobile, and web. This obviously meant integrating Firebase Authentication (auth), Firebase Cloud Firestore, etc on my web and mobile app.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Doing so on mobile and web are no problems at all since dedicated packages are available to use Firebase Authentication (auth) and Firebase Cloud Firestore on mobile and web separately.
+Firebase libraries for mobile:
+firebase_core
+firebase_auth
+could_firestore
+Firebase libraries for web:
+firebase
+The real problems arise when you try to add both of these in the single codebase.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# The Solution
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Have a look at the Medium article I wrote here to get to know how to get Firebase web and mobile working in one codebase.
