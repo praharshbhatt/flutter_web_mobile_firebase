@@ -19,7 +19,7 @@ WebFirebase.Auth webAuth = WebFirebase.auth();
 
 // For google sign in
 final GoogleSignIn mobGoogleSignIn = GoogleSignIn();
-WebFirebase.AuthProvider webGoogleSignIn;
+WebFirebase.GoogleAuthProvider webGoogleSignIn;
 
 //CloudFireStore
 MobFirebaseFirestore.Firestore dbFirestore = MobFirebaseFirestore.Firestore.instance;
@@ -59,7 +59,8 @@ class AuthService {
     } else {
       //For web
       if (webAuth != null) {
-        webFirebaseUser = webAuth.currentUser;
+        webFirebaseUser = await webAuth.onAuthStateChanged.first;
+        print(webFirebaseUser);
 
         if (webFirebaseUser != null) {
           //User is already logged in
@@ -94,7 +95,15 @@ class AuthService {
       return firebaseUser;
     } else {
       //For web
-      webFirebaseUser = (await webAuth.signInWithPopup(webGoogleSignIn)).user;
+      var provider = new WebFirebase.GoogleAuthProvider();
+      try {
+        WebFirebase.UserCredential _userCredential = await webAuth.signInWithPopup(provider);
+        webFirebaseUser = _userCredential.user;
+      } catch (e) {
+        webFirebaseUser = null;
+        print("Error in sign in with google: $e");
+      }
+
       return webFirebaseUser;
     }
   }

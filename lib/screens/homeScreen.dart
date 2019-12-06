@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_web_firebase/main.dart';
+import 'package:mobile_web_firebase/screens/signin.dart';
 import 'package:mobile_web_firebase/services/auth.dart';
 //==================This is the Homepage for the app==================
 
@@ -33,6 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
         home: Scaffold(
           appBar: AppBar(
             title: Text((!kIsWeb) ? "Welcome, " + firebaseUser.displayName : "Welcome"),
+            actions: <Widget>[
+              RaisedButton(
+                child: Text("Log out"),
+                onPressed: () {
+                  authService.signOut();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInScreen()));
+                },
+              )
+            ],
           ),
 
           //FAB
