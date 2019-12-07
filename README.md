@@ -18,3 +18,4 @@ The real problems arise when you try to add both of these in the single codebase
 # The Solution
 
 Have a look at the Medium article I wrote here to get to know how to get Firebase web and mobile working in one codebase.
+https://medium.com/multiverse-software/firebase-on-flutter-mobile-and-web-284812056c5c
